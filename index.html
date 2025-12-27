@@ -1,4 +1,279 @@
-<!DOCTYPE html> <html lang="zh-Hant"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <title>我的網站</title> <link rel="stylesheet" href="style.css"> </head> <body> <h1>歡迎來到我的網站</h1> <p>這是一個使用 GitHub Pages 建立的個人網站。</p> </body> </html>
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>微光設計 Glimmer Design</title>
+  <meta name="description" content="微光設計｜品牌識別、網站設計、社群視覺，一頁式官網範本，可直接上線使用。" />
+  <style>
+    :root{
+      --bg:#0b0b12;           /* 背景深色 */
+      --ink:#e9e9f2;          /* 主要文字 */
+      --muted:#b5b6c8;        /* 次要文字 */
+      --card:#12121b;         /* 卡片背景 */
+      --line:#232338;         /* 邊線 */
+      --glow1:#8bd7ff;        /* 微光藍 */
+      --glow2:#ffd6a5;        /* 微光杏 */
+      --glow3:#b692ff;        /* 微光紫 */
+      --accent:#9ad6ff;       /* 互動色 */
+      --radius:20px;
+      --shadow:0 12px 30px rgba(0,0,0,.35),0 4px 12px rgba(0,0,0,.22);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family: ui-rounded, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Hiragino Sans", "Microsoft JhengHei", sans-serif;color:var(--ink);background:radial-gradient(1200px 600px at 10% -10%, rgba(139,215,255,.15), transparent 60%),radial-gradient(1200px 600px at 90% 10%, rgba(182,146,255,.16), transparent 60%),var(--bg)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter: blur(8px);background:rgba(11,11,18,.6);border-bottom:1px solid var(--line)}
+    .nav-inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.6px}
+    .brand .logo{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 210deg, var(--glow1), var(--glow2), var(--glow3));box-shadow:0 0 24px rgba(154,214,255,.45)}
+    .nav a.link{opacity:.85;margin:0 10px}
+    .nav a.link:hover{opacity:1}
+    .nav .cta{padding:8px 12px;border:1px solid var(--accent);border-radius:12px}
+
+    /* HERO */
+    .hero{max-width:1160px;margin:0 auto;padding:54px 18px 28px;display:grid;gap:18px;align-items:center}
+    .hero h1{font-size:clamp(28px,5vw,56px);line-height:1.1;margin:8px 0}
+    .hero p{color:var(--muted);font-size:clamp(14px,2.2vw,18px);margin:0}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .chip{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.02)}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .btn{cursor:pointer;background:linear-gradient(135deg, var(--glow1), var(--glow3));color:#0b0b12;padding:12px 16px;border-radius:14px;font-weight:800;border:0;box-shadow:0 10px 24px rgba(154,214,255,.25);transition:.2s transform ease}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line);box-shadow:none}
+
+    /* SECTIONS */
+    .section{max-width:1160px;margin:26px auto;padding:0 18px}
+    .section h2{font-size:26px;margin:8px 0 14px}
+    .grid{display:grid;gap:14px}
+    @media(min-width:760px){.grid.cols-3{grid-template-columns:repeat(3, 1fr)}.grid.cols-2{grid-template-columns:repeat(2,1fr)}}
+
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.02), rgba(255,255,255,.01));border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px}
+    .muted{color:var(--muted)}
+
+    /* WORKS */
+    .work{display:flex;flex-direction:column;gap:10px}
+    .thumb{aspect-ratio:16/9;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:radial-gradient(400px 200px at 30% 20%, rgba(154,214,255,.25), transparent 60%),radial-gradient(400px 200px at 80% 60%, rgba(182,146,255,.25), transparent 60%),#151522}
+    .thumb::after{content:"";display:block;inline-size:100%;block-size:100%;background-image:repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 8px, transparent 8px 16px)}
+    .tag{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border:1px solid var(--line);border-radius:999px}
+
+    /* QUOTE */
+    .quote{position:relative;overflow:hidden}
+    .quote::before{content:"";position:absolute;inset:-40px -60px;background:radial-gradient(600px 240px at 20% 10%, rgba(154,214,255,.18), transparent 60%),radial-gradient(600px 260px at 80% 60%, rgba(182,146,255,.15), transparent 60%)}
+
+    /* CONTACT */
+    form{display:grid;gap:10px}
+    input, textarea{background:#0e0e17;color:var(--ink);border:1px solid var(--line);padding:12px 12px;border-radius:12px}
+    input::placeholder, textarea::placeholder{color:#8b8ca2}
+    textarea{min-height:120px}
+
+    .footer{max-width:1160px;margin:28px auto 16px;padding:0 18px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:14px}
+  .thumb {
+    position: relative;
+    aspect-ratio: 16/9;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: linear-gradient(135deg,#0e0e17,#141422);
+  }
+  
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 0; /* ✅ 圖片在底層 */
+  }
+  
+  .thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,.08) 0,
+      rgba(255,255,255,.08) 1px,
+      transparent 0,
+      transparent 8px
+    );
+    z-index: 1;  /* ✅ 斜線在圖片上面 */
+    pointer-events: none;
+  }
+  
+  
+  </style>
+  <script>
+    // 簡易行動版導覽（可擴充）
+    function scrollToId(id){document.querySelector(id)?.scrollIntoView({behavior:'smooth'});}
+  </script>
+</head>
+
+
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand" onclick="scrollToId('#top')" style="cursor:pointer">
+        <div class="logo"></div>
+        <span>微光設計 <span style="opacity:.6">Glimmer Design</span></span>
+      </div>
+      <div>
+        <a class="link" href="#services">服務</a>
+        <a class="link" href="nextpage.html">作品</a>
+        <a class="link" href="#about">關於</a>
+        <a class="link" href="#contact" style="margin-right:8px">聯繫</a>
+        <a class="cta" href="#contact">取得報價</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div>
+      <div class="chip">設計，像微光一樣溫柔卻有力量</div>
+      <h1>品牌、網站與社群視覺，<br>我們用 <span style="background:linear-gradient(90deg,var(--glow1),var(--glow2),var(--glow3));-webkit-background-clip:text;background-clip:text;color:transparent">微光</span> 點亮你的作品。</h1>
+      <p>微光設計專注於：品牌識別、UI/UX、形象網站、電商視覺、活動主視覺與社群整體風格。從策略到落地，一站式完成。</p>
+      <div class="chips">
+        <span class="chip">品牌識別</span>
+        <span class="chip">網站設計</span>
+        <span class="chip">UI/UX 原型</span>
+        <span class="chip">海報與主視覺</span>
+        <span class="chip">社群整體設計</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn" href="#contact">立即諮詢</a>
+        <a class="btn btn-ghost" href="#works">看看作品</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <h2>我們能幫你的事</h2>
+    <div class="grid cols-3">
+      <article class="card">
+        <h3>品牌識別與手冊</h3>
+        <p class="muted">LOGO、字體、色票、延伸規範，建立可被長期使用的品牌系統。</p>
+      </article>
+      <article class="card">
+        <h3>網站 / UI 設計</h3>
+        <p class="muted">形象官網、活動頁、電商介面，支援 RWD 與原型互動。</p>
+      </article>
+      <article class="card">
+        <h3>社群與行銷視覺</h3>
+        <p class="muted">貼文模板、KV 主視覺、廣告素材，維持一致風格與效率。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section id="works" class="section">
+    <h2>精選作品</h2>
+
+</article>	
+    <div class="grid cols-3">
+		
+<a href="nextpage.html" style="text-decoration:none; color:inherit;">
+  <article class="card work">
+    <div class="thumb">
+      <img src="images/LOGO/百花谷.png" alt="微光設計作品1" width="250">
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3>LOGO作品集</h3>
+      <span class="tag">點選進入</span>
+    </div>
+    <p class="muted">LOGO大多以遊戲為主。</p>
+   </article>
+ </a>
+  
+<a href="nextpage.html" style="text-decoration:none; color:inherit;">
+  <article class="card work">
+    <div class="thumb">
+      <img src="images/登入器/百花登入器.png" alt="微光設計作品1" width="250">
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3>登入器作品集</h3>
+      <span class="tag">點選進入</span>
+    </div>
+    <p class="muted">各式遊戲登入器設計。</p>
+    </article>
+  </a>
+  
+    <a href="nextpage.html" style="text-decoration:none; color:inherit;">
+      <article class="card work">
+        <div class="thumb">
+          <img src="images/宣傳圖/CC谷.png" alt="微光設計作品1" width="250">
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h3>宣傳圖作品集</h3>
+          <span class="tag">點選進入</span>
+        </div>
+        <p class="muted">各式廣告宣傳圖。</p>
+       </article>
+     </a>
+	  
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="section">
+    <article class="card quote">
+      <h2>客戶回饋</h2>
+      <p class="muted">「微光設計把我們想說的故事拆解成有溫度的畫面，網站上線後詢盤明顯增加，社群視覺也更一致。」</p>
+      <p style="opacity:.8">— L. Chen / 行銷主管</p>
+    </article>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <h2>關於微光</h2>
+    <div class="grid cols-2">
+      <article class="card">
+        <h3>我們相信慢與穩的力量</h3>
+        <p class="muted">每個專案，從需求洞察、線框、視覺風格、元件系統到最終交付，都有步驟與節奏。我們與你一起定義「為什麼做」、而不只是「做出來」。</p>
+      </article>
+      <article class="card">
+        <h3>合作流程</h3>
+        <ol class="muted">
+          <li>初談與估價 → 明確目標與時程</li>
+          <li>研究與原型 → 提案方向與動態雛形</li>
+          <li>視覺定稿 → 元件與設計系統</li>
+          <li>上線/交付 → 文件與後續優化</li>
+        </ol>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <h2>聊聊你的計畫</h2>
+    <div class="grid cols-2">
+      <article class="card">
+        <form action="mailto:hello@glimmer.design" method="post" enctype="text/plain">
+          <input name="name" placeholder="你的姓名" required>
+          <input name="email" type="email" placeholder="Email" required>
+          <input name="budget" placeholder="預算範圍（選填）">
+          <textarea name="message" placeholder="請簡述你的需求／目標"></textarea>
+          <button class="btn" type="submit">送出需求</button>
+          <button class="btn btn-ghost" type="reset">清除</button>
+        </form>
+      </article>
+      <article class="card">
+        <h3>聯絡資訊</h3>
+        <p class="muted">Email：hello@glimmer.design<br>Line：@glimmer (示意)<br>地點：Taipei · Remote</p>
+        <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+          <span class="tag">可開立發票</span>
+          <span class="tag">RWD 響應式</span>
+          <span class="tag">設計系統</span>
+          <span class="tag">SEO 友善</span>
+        </div>
+      </article>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="brand"><div class="logo"></div>微光設計</div>
@@ -8,4 +283,3 @@
   <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 </body>
 </html>
-
